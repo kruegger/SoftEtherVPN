@@ -13,7 +13,7 @@ PrivateTmp=yes
 ProtectHome=yes
 ProtectSystem=full
 ReadOnlyDirectories=/
-ReadWriteDirectories=-/usr/lib/softethervpn/vpnbridge
+ReadWriteDirectories=-/opt/softethervpn/vpnbridge
 
 [Install]
 WantedBy=multi-user.target
