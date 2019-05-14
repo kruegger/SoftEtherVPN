@@ -15,9 +15,9 @@ source=("https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/$
         'softethervpn-server.service')
 md5sums=('0b0bf86c59374f5ea1dbde20b3a3b5d3'
          '8b92f69f9d8d852a3739d0e48bad0454'
-         '1d54c0065ae8947bd8455b9e2050c1af'
-         'a1134fea991e6e00dc4910b1be16dc73'
-         'b54b4f68d56555ddfffc50c2c399624f')
+         '51ae763eb186dff302ec15455faf026d'
+         '64bb6ba98766e3107126c16a42900347'
+         'adfe4bc73cf1591a0daaf7b39a14b0b3')
 
 build(){
   cd "${srcdir}/${pkgver//_/-}"
@@ -42,7 +42,7 @@ package(){
   install -Dm444 bin/vpnserver/hamcore.se2 "${pkgdir}"/opt/softethervpn/hamcore.se2
   install -d "${pkgdir}"/usr/bin
 
-  for inst in vpnclient vpnserver vpnbridge vpncmd; do
+  for inst in vpnserver vpncmd; do
     install -Dm755 bin/${inst}/${inst} "${pkgdir}"/opt/softethervpn/${inst}/${inst}
     ln -s /opt/softethervpn/hamcore.se2 "${pkgdir}"/opt/softethervpn/${inst}/hamcore.se2
     echo "#!/bin/sh" > "${pkgdir}"/usr/bin/${inst}
@@ -52,7 +52,7 @@ package(){
   done
 
   install -d "${pkgdir}"/usr/lib/systemd/system
-  install -Dm644 "${srcdir}"/*.service "${pkgdir}"/usr/lib/systemd/system
+  install -Dm644 "${srcdir}"/softethervpn-server.service "${pkgdir}"/usr/lib/systemd/system
 }
 
 # vim:set ts=2 sw=2 et:
