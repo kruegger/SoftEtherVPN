@@ -39,14 +39,14 @@ build(){
 package(){
   cd "${srcdir}/${pkgver//_/-}"
 
-  install -Dm444 bin/vpnserver/hamcore.se2 "${pkgdir}"/usr/lib/softethervpn/hamcore.se2
+  install -Dm444 bin/vpnserver/hamcore.se2 "${pkgdir}"/opt/softethervpn/hamcore.se2
   install -d "${pkgdir}"/usr/bin
 
   for inst in vpnclient vpnserver vpnbridge vpncmd; do
-    install -Dm755 bin/${inst}/${inst} "${pkgdir}"/usr/lib/softethervpn/${inst}/${inst}
-    ln -s /usr/lib/softethervpn/hamcore.se2 "${pkgdir}"/usr/lib/softethervpn/${inst}/hamcore.se2
+    install -Dm755 bin/${inst}/${inst} "${pkgdir}"/opt/softethervpn/${inst}/${inst}
+    ln -s /opt/softethervpn/hamcore.se2 "${pkgdir}"/opt/softethervpn/${inst}/hamcore.se2
     echo "#!/bin/sh" > "${pkgdir}"/usr/bin/${inst}
-    echo /usr/lib/softethervpn/${inst}/${inst} '"$@"' >> "${pkgdir}"/usr/bin/${inst}
+    echo /opt/softethervpn/${inst}/${inst} '"$@"' >> "${pkgdir}"/usr/bin/${inst}
     echo 'exit $?' >> "${pkgdir}"/usr/bin/${inst}
     chmod 755 "${pkgdir}"/usr/bin/${inst}
   done
