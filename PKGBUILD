@@ -42,7 +42,7 @@ package(){
   install -Dm444 bin/vpnserver/hamcore.se2 "${pkgdir}"/opt/softethervpn/hamcore.se2
   install -d "${pkgdir}"/usr/bin
 
-  for inst in vpnserver vpncmd; do
+  for inst in vpnserver vpnclient vpncmd; do
     install -Dm755 bin/${inst}/${inst} "${pkgdir}"/opt/softethervpn/${inst}/${inst}
     ln -s /opt/softethervpn/hamcore.se2 "${pkgdir}"/opt/softethervpn/${inst}/hamcore.se2
     echo "#!/bin/sh" > "${pkgdir}"/usr/bin/${inst}
@@ -53,6 +53,7 @@ package(){
 
   install -d "${pkgdir}"/usr/lib/systemd/system
   install -Dm644 "${srcdir}"/softethervpn-server.service "${pkgdir}"/usr/lib/systemd/system
+  install -Dm644 "${srcdir}"/softethervpn-client.service "${pkgdir}"/usr/lib/systemd/system
 }
 
 # vim:set ts=2 sw=2 et:
