@@ -6,6 +6,7 @@ After=network.target
 Type=forking
 ExecStart=/usr/bin/vpnclient start
 ExecStop=/usr/bin/vpnclient stop
+ExecStartPost=/usr/bin/sleep 3
 ExecStartPost=/usr/bin/netctl start vpn_tun0
 ExecStartPost=/usr/bin/netctl start vpn_tun1
 Restart=on-failure
