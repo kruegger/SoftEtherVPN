@@ -16,7 +16,7 @@ source=("https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/$
 md5sums=('0b0bf86c59374f5ea1dbde20b3a3b5d3'
          '8b92f69f9d8d852a3739d0e48bad0454'
          '51ae763eb186dff302ec15455faf026d'
-         '61044c908ad78a9fb02ed1fc5d0c3311'
+         'c2600602409e933569391d179b122eae'
          'adfe4bc73cf1591a0daaf7b39a14b0b3')
 
 build(){
